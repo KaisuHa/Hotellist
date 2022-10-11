@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+//import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+//import javax.validation.constraints.Size;
 
 @Entity
 public class Hotel {
@@ -14,9 +17,13 @@ public class Hotel {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
+	//@Size(min = 1, message = "Please enter")
 	private String hotelName, address, description;
+	
+	@Min(value = 5, message ="Price is needed")
+	//@Max(value = 100, message = "Check value")
 	private double price;
-
+	
 	@ManyToOne
 	@JoinColumn(name = "reviewid")
 	private Review review;
