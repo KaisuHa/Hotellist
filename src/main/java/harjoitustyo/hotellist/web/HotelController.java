@@ -2,7 +2,11 @@ package harjoitustyo.hotellist.web;
 
 import javax.validation.Valid;
 
+
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +28,12 @@ public class HotelController {
 	
 	@Autowired
 	private ReviewRepository rrepository;
+	
+	@GetMapping(value = {"/main", "/"})
+	public String showFirstPage() {
+		//Log.info("Going to main page");
+		return "mainPage";
+	}
 		
     @GetMapping(value= {"/", "/hotellist"})
     public String hotelList(Model model) {	
@@ -31,6 +41,7 @@ public class HotelController {
         return "hotellist";
     }
     
+    @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping("/edit/{id}")
 	public String editHotel(@PathVariable("id") Long hotelId, Model model) {
 		model.addAttribute("hotel", hrepository.findById(hotelId));

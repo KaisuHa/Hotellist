@@ -1,6 +1,7 @@
 package harjoitustyo.hotellist.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,7 +25,7 @@ public class Hotel {
 	//@Max(value = 100, message = "Check value")
 	private double price;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "reviewid")
 	private Review review;
 	
