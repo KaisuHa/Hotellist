@@ -25,7 +25,7 @@
 		    	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${hotel.id})}">Edit</a></td>
 		    	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${hotel.id})}">Delete</a></td>
 	</table>
-		 <a href="/add">Add hotel</a>
+		 <td sec:authorize="hasAuthority('ADMIN')"><a href="/add">Add hotel</a></td>
 		 	 <form th:action="@{logout}" method="post" >
 	 	<input type="submit" value="Sign Out" />
 	 </form>

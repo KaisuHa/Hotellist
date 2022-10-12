@@ -8,8 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 //import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
+//import javax.validation.constraints.Min;
 //import javax.validation.constraints.Size;
+//import javax.validation.constraints.Size;
+
 
 @Entity
 public class Hotel {
@@ -18,11 +20,11 @@ public class Hotel {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	//@Size(min = 1, message = "Please enter")
+	//@Size(min = 5, max = 50)
 	private String hotelName, address, description;
 	
-	@Min(value = 5, message ="Price is needed")
-	//@Max(value = 100, message = "Check value")
+	//@Min(value = 5, message = "Please enter price")
+	//@Max(value = 100, message = "Price is too high")
 	private double price;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

@@ -10,6 +10,7 @@
 	<div>
 	
 		 <form th:object="${hotel}" th:action="@{save}" action="#" method="post"> 
+	
 		 	<label for="hotelName">Hotel</label>
 			 <input type="text" id="hotelName" th:field="*{hotelName}" />
 			<!-- <td th if:="${#fields.hasErrors('hotelName')}" th:errors="*{hotelName}">Error</td>  -->
