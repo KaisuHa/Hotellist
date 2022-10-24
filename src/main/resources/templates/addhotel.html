@@ -4,37 +4,45 @@
 <meta charset="ISO-8859-1">
 <title>Add hotel</title>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+ 
 </head>
 <body>
+		<div class= "text-center">
 		<h1>Add hotel</h1>
-	<div>
+		</div>
+		
+	<!--  	<table class="table table-striped" >-->
+		
+	<div class="col-md-1"  >
 	
 		 <form th:object="${hotel}" th:action="@{save}" action="#" method="post"> 
 	
 		 	<label for="hotelName">Hotel</label>
 			 <input type="text" id="hotelName" th:field="*{hotelName}" />
-			<!-- <td th if:="${#fields.hasErrors('hotelName')}" th:errors="*{hotelName}">Error</td>  -->
+			 <td th:if="${#fields.hasErrors('hotelName')}" th:errors="*{hotelName}">Error</td>  
 			 
 			 <label for="address">Address</label>
 			 <input type="text" id="address" th:field="*{address}" />
-			<!-- <td th if:="${#fields.hasErrors('address')}" th:errors="*{address}">Error</td>-->
+			 <td th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Error</td>
 			 
 			 <label for="description">Description</label>
 			 <input type="text" th:field="*{description}" />
-			<!-- <td th if:="${#fields.hasErrors('description')}" th:errors="*{description}">Error</td>-->
+			 <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Error</td>
 			 
 			 <label for="price">Price</label>
 			 <input type="text" th:field="*{price}" />
-			<!-- <td th if:="${#fields.hasErrors('price')}" th:errors="*{price}">Error</td>-->
+			 <td th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Error</td>
 			 
 			 <label for="review">Review</label>
 			 <select id="review" th:field="*{review}"  >
 			 	<option th:each="review: ${reviews}" th:value="${review.reviewid}" th:text="${review.stars}"></option>
 			 	</select>
 			
-			 
-			 <input type="submit" value="Save"></input>
+			 <input type="submit" class="btn btn-success" value="Save"></input>
 		 </form>
+		
 	</div>
+<!--  </table>-->	
 </body>
 </html>

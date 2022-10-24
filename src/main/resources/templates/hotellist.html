@@ -4,30 +4,40 @@
 <meta charset="ISO-8859-1">
 <title>Breakfasts</title>
  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+ 
 </head>
 <body>
-	<h1>Hotel breakfasts Helsinki</h1>
+	<div class="text-center">
+	<h1>Hotel Breakfasts Helsinki</h1>
 	<h3 th:inline="text">Welcome to Hotel Breakfasts,  [[${#httpServletRequest.remoteUser}]]! </h3>
-	<table>
+	</div>
+	<table class="table table-striped">
+	<thead class="thead-dark">
 			<tr>
-			    <th>Hotel</th>
-			    <th>Address</th>
-				<th>Description</th>
-			    <th>Price</th>
+			    <th scope="col">Hotel</th>
+			    <th scope="col">Address</th>
+				<th scope="col">Description</th>
+			    <th scope="col">Price</th>
+			    <th scope="col">Review</th>			    
 			    <th sec:authorize="hasAuthority('ADMIN')"></th>
 			</tr>
+			</thead>
 				<tr th:each= "hotel: ${hotels}">
 				<td th:text="${hotel.hotelName}"></td>
 				<td th:text="${hotel.address}"></td>
 		    	<td th:text="${hotel.description}"></td>
 		    	<td th:text="${hotel.price}"></td>
- 				<td th:text="${hotel.review.stars}"></td>
-		    	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/edit/{id}(id=${hotel.id})}">Edit</a></td>
-		    	<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${hotel.id})}">Delete</a></td>
-	</table>
-		 <td sec:authorize="hasAuthority('ADMIN')"><a href="/add">Add hotel</a></td>
+		    	<td th:text="${hotel.review.stars}"></td>
+		    	<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-warning" th:href="@{/edit/{id}(id=${hotel.id})}">Edit</a></td>
+		    	<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${hotel.id})}">Delete</a></td>
+		    	</tr>
+		    		</table>
+		 <td sec:authorize="hasAuthority('ADMIN')"><a href="/add" class="btn btn-success">Add hotel</a></td>
 		 	 <form th:action="@{logout}" method="post" >
-	 	<input type="submit" value="Sign Out" />
+		 	 <br>
+	 	<input type="submit" class="btn btn-danger" value="Sign Out" />
 	 </form>
+	 
 </body>
 </html>
