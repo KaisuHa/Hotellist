@@ -26,12 +26,10 @@ public class Hotel {
 	@Size(min=2, max=30)
 	@Column(name= "hotelname")
 	private String hotelName;
-	//@Size(min=2, max=30)
 	private String address;
-	//@Size(min=2, max=30)
 	private String description;
 	
-	@Min(value = 0, message = "Please enter price")
+	@Min(value = 5, message = "Price is too low")
 	@Max(value = 100, message = "Price is too high")
 	private double price;
 	
@@ -41,7 +39,7 @@ public class Hotel {
 	
 	public Hotel() {
 		super();
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public Hotel(String hotelName, String address, String description, double price, Review review) {
@@ -99,6 +97,9 @@ public class Hotel {
 	public void setReview(Review review) {
 		this.review = review;
 	}
+
+
+	}
 	
 	
-}
+

@@ -2,6 +2,7 @@ package harjoitustyo.hotellist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -20,11 +21,14 @@ import harjoitustyo.hotellist.domain.ReviewRepository;
 public class HotellistApplication {
 	private static final Logger log = LoggerFactory.getLogger(HotellistApplication.class);
 	
-	//@Autowired
-	//HotelRepository hrepository;
+	@Autowired
+	HotelRepository hrepository;
 
-	//@Autowired
-	//HotelRepository rrepository;
+	@Autowired
+	HotelRepository rrepository;
+	
+	@Autowired
+	AppUserRepository userrepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(HotellistApplication.class, args);

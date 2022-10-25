@@ -35,7 +35,6 @@ public class HotelRepositoryTests {
 		
 		Review review = hRepository.findById((long) 1).get().getReview();
 		System.out.println("Haku id 1 " + review);
-		// testataan assertilla, että haku toimii oikein.
 		assertEquals(review.getStars(), "4 stars");
 	}
 
